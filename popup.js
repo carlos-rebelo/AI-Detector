@@ -20,11 +20,10 @@ scanBtn.addEventListener("click", () => {
         if (response && response.text) {
           const sampleText = response.text.slice(0, 1000);
 
-          fetch("https://api.sapling.ai/api/v1/aidetect", {
+          fetch("https://ai-detector-production-2614.up.railway.app/detect", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              key: API_KEY,
               text: sampleText,
               sent_scores: true,
               score_string: false,
@@ -113,13 +112,12 @@ summarizeBtn.addEventListener("click", () => {
   summarizeBtn.disabled = true;
   summaryResult.textContent = "Summarizing...";
 
-  fetch("https://api.sapling.ai/api/v1/summarize", {
+  fetch("https://ai-detector-production-2614.up.railway.app/summarize", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      key: API_KEY,
       text: inputText
     })
   })
